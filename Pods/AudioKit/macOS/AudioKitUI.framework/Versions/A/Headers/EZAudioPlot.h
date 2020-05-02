@@ -210,10 +210,6 @@ FOUNDATION_EXPORT UInt32 const EZAudioPlotDefaultMaxHistoryBufferLength;
 
 @end
 
-struct _EZPlotHistoryInfo;
-
-typedef struct _EZPlotHistoryInfo EZPlotHistoryInfo;
-
 @interface EZAudioPlot () <EZAudioDisplayLinkDelegate>
 @property (nonatomic, strong) EZAudioDisplayLink *displayLink;
 @property (nonatomic, assign) EZPlotHistoryInfo  *historyInfo;

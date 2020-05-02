@@ -21,7 +21,7 @@ typedef NS_ENUM(AUParameterAddress, AKBoosterParameter) {
 
 #ifndef __cplusplus
 
-AKDSPRef createBoosterDSP(int channelCount, double sampleRate);
+void *createBoosterDSP(int nChannels, double sampleRate);
 
 #else
 
@@ -37,8 +37,8 @@ AKDSPRef createBoosterDSP(int channelCount, double sampleRate);
 struct AKBoosterDSP : AKDSPBase {
 
 private:
-    struct InternalData;
-    std::unique_ptr<InternalData> data;
+    struct _Internal;
+    std::unique_ptr<_Internal> _private;
 
 public:
     AKBoosterDSP();

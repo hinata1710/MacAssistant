@@ -24,18 +24,7 @@
 //  THE SOFTWARE.
 
 #import <Foundation/Foundation.h>
-
-//------------------------------------------------------------------------------
-#pragma mark - Types
-//------------------------------------------------------------------------------
-
-#if TARGET_OS_IPHONE
-@import UIKit;
-typedef CGRect EZRect;
-#else
-@import Cocoa;
-typedef NSRect EZRect;
-#endif
+#import "AudioKit/EZAudioUtilities.h"
 
 //------------------------------------------------------------------------------
 #pragma mark - Enumerations

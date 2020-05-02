@@ -19,34 +19,19 @@ class AKSoundpipeKernel: public AKDSPKernel {
 protected:
     sp_data *sp = nullptr;
 public:
-    //    AKSoundpipeKernel(int channelCount, float sampleRate):
-    //        AKDSPKernel(channelCount, sampleRate) {
+    //    AKSoundpipeKernel(int _channels, float _sampleRate):
+    //        AKDSPKernel(_channels, _sampleRate) {
     //
     //      sp_create(&sp);
-    //      sp->sr = sampleRate;
-    //      sp->nchan = channelCount;
+    //      sp->sr = _sampleRate;
+    //      sp->nchan = _channels;
     //    }
 
-    sp_data *getSpData() { return sp; }
-
-    // The default constructor should be deleted,
-    // but we're keeping it to not break the API
-    AKSoundpipeKernel() = default;
-
-    AKSoundpipeKernel(int channelCount, double sampleRate) :
-        AKDSPKernel(channelCount, sampleRate) {
+    void init(int _channels, double _sampleRate) override {
+        AKDSPKernel::init(_channels, _sampleRate);
         sp_create(&sp);
-        sp->sr = sampleRate;
-        sp->nchan = channelCount;
-    }
-    
-    void init(int channelCount, double sampleRate) override {
-        AKDSPKernel::init(channelCount, sampleRate);
-        if (sp == nullptr) {
-            sp_create(&sp);
-        }
-        sp->sr = sampleRate;
-        sp->nchan = channelCount;
+        sp->sr = _sampleRate;
+        sp->nchan = _channels;
     }
 
     ~AKSoundpipeKernel() {
